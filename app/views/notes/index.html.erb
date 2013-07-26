@@ -1,0 +1,33 @@
+<h1>Listing notes</h1>
+
+<table>
+  <tr>
+    <th>Title</th>
+    <th>Task</th>
+    <th>Action date</th>
+    <th>Reminder</th>
+    <th>Body</th>
+    <th>Related profile</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @notes.each do |note| %>
+  <tr>
+    <td><%= note.title %></td>
+    <td><%= note.task %></td>
+    <td><%= note.action_date %></td>
+    <td><%= note.reminder %></td>
+    <td><%= note.body %></td>
+    <td><%= note.related_profile_id %></td>
+    <td><%= link_to 'Show', note %></td>
+    <td><%= link_to 'Edit', edit_note_path(note) %></td>
+    <td><%= link_to 'Destroy', note, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Note', new_note_path %>

@@ -1,0 +1,15 @@
+<div>
+	<h2>Contacts</h2>
+	<% @connections.all.each do |c| %>
+		<% if c.first_name != "private" %>
+			<div class="media">
+				<a class="pull-left" href="#">
+					<%= image_tag(c.picture_url, height: '32', width: '32', :class=>"media-object") %>
+				</a>
+				<div class="media-body">
+					<div class="media-heading"><%= c.first_name %> <%= c.last_name %></div>	
+				</div>
+			</div>
+		<% end %>
+	<% end %>
+<div>
