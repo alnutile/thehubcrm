@@ -1,0 +1,27 @@
+<%= render 'shared/nav' %>
+<div ng-app="HubCRM">
+	<div class="row">
+		<div ng-controller="DashCtrl">
+			<div class="row">
+				<h2 class="text-center ">Dashboard</h2>
+				<hr>
+				<%= render 'shared/messages_angular' %>
+        	</div>
+        	<div class="row">
+        		<div class="span8">
+					<div class="span7 well">
+						<%= render 'note' %>
+					</div>
+					<div class="span7">
+						<h2 class="text-center">Notes</h2>
+						<%= render 'notes' %>
+					</div>
+				</div>
+			    <div class="span4">
+			    	<h2>Connections</h2>
+			    	<%= render 'connections' %>
+			    </div>
+			</div>
+		</div>
+	</div>
+</div>

@@ -11,7 +11,16 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130726212937) do
+ActiveRecord::Schema.define(:version => 20130726233957) do
+
+  create_table "linked_in_settings", :force => true do |t|
+    t.string   "key"
+    t.string   "secret"
+    t.datetime "synced_last"
+    t.integer  "total_count"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
 
   create_table "notes", :force => true do |t|
     t.string   "title"
@@ -22,6 +31,15 @@ ActiveRecord::Schema.define(:version => 20130726212937) do
     t.string   "related_profile_id"
     t.datetime "created_at",         :null => false
     t.datetime "updated_at",         :null => false
+  end
+
+  create_table "people", :force => true do |t|
+    t.string   "first_name"
+    t.string   "last_name"
+    t.string   "image"
+    t.string   "network_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
 end

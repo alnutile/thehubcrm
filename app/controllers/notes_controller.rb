@@ -2,8 +2,16 @@ class NotesController < ApplicationController
   # GET /notes
   # GET /notes.json
   def index
-    @notes = Note.all
-
+    if params[:person_id].present?
+      @person = Person.find_by_id(params[:person_id])
+      if @person.network_id.present? 
+        @notes = Note.find_all_by_related_profile_id(@person.network_id)
+      else 
+        @notes = Note.find_all_by_related_profile_id(params[:person_id])
+      end
+    else
+      @notes = Note.all
+    end
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @notes }
@@ -30,6 +38,15 @@ class NotesController < ApplicationController
       format.html # new.html.erb
       format.json { render json: @note }
     end
+  end
+
+  def notes_using_person_id
+    logger.info("Notes: #{params}")
+    @notes = Note.find_by_related_profile_id(params[:id])
+    respond_to do |format|
+      format.html # new.html.erb
+      format.json { render json: @notes }
+    end  
   end
 
   # GET /notes/1/edit

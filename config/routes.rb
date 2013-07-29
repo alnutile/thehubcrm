@@ -1,7 +1,17 @@
 Linkedin::Application.routes.draw do
 
-  resources :notes
+  match "dashboard" => "dashboard#index"
 
+  resources :linked_in_settings
+
+
+  resources :people do
+    resources :notes do
+    end
+  end
+
+
+  resources :notes
 
   resources :auth
 

@@ -1,0 +1,2 @@
+module LinkedInSettingsHelper
+end

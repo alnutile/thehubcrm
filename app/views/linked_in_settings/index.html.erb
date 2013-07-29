@@ -1,0 +1,29 @@
+<h1>Listing linked_in_settings</h1>
+
+<table>
+  <tr>
+    <th>Key</th>
+    <th>Secret</th>
+    <th>Synced last</th>
+    <th>Total count</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @linked_in_settings.each do |linked_in_setting| %>
+  <tr>
+    <td><%= linked_in_setting.key %></td>
+    <td><%= linked_in_setting.secret %></td>
+    <td><%= linked_in_setting.synced_last %></td>
+    <td><%= linked_in_setting.total_count %></td>
+    <td><%= link_to 'Show', linked_in_setting %></td>
+    <td><%= link_to 'Edit', edit_linked_in_setting_path(linked_in_setting) %></td>
+    <td><%= link_to 'Destroy', linked_in_setting, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Linked in setting', new_linked_in_setting_path %>

@@ -11,6 +11,14 @@
 // GO AFTER THE REQUIRES BELOW.
 //
 //= require jquery
+//= require jquery.ui.all
 //= require jquery_ujs
 //= require bootstrap
+//= require angular
+//= require angular-resource
+//= require angular-ui
+//= require date.js
+//= require jquery-ui-timepicker-addon
+//= require dash_non_angular
+//= require dashboard
 //= require_tree .
