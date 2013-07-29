@@ -12,5 +12,6 @@
  *= require jquery.ui.all
  *= require angular-ui
  *= jquery-ui-timepicker-addon
+ *= require bootstrap-wysihtml5
  *= require_tree .
  */

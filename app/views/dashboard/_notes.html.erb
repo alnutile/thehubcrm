@@ -1,6 +1,15 @@
 <!-- notes partial -->
-<div ng-repeat="note in notes">
-	{{ note.title }}
-	{{ note.created_at}}
-	{{ note.body }}
+<div class="accordion" id="accordion2">
+  <div class="accordion-group" ng-repeat="note in notes">
+    <div class="accordion-heading">
+      <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapse-{{$index + 1}}">
+        {{ note.title }} @ {{ note.created_at}}
+      </a>
+    </div>
+    <div id="collapse-{{$index + 1}}" class="accordion-body collapse">
+      <div class="accordion-inner">
+        {{ note.body }}
+      </div>
+    </div>
+  </div>
 </div>

@@ -52,7 +52,7 @@
         var note = Note.api.save($scope.note)
         $scope.note = {};
         $scope.message = { type: 'success', message: "Note Created" }
-        //$scope.notes.push(note)
+        $scope.notes.push(note)
       };
 
       $scope.notePerson = function() {
