@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130726233957) do
+ActiveRecord::Schema.define(:version => 20130729182527) do
 
   create_table "linked_in_settings", :force => true do |t|
     t.string   "key"
@@ -29,8 +29,9 @@ ActiveRecord::Schema.define(:version => 20130726233957) do
     t.boolean  "reminder"
     t.text     "body"
     t.string   "related_profile_id"
-    t.datetime "created_at",         :null => false
-    t.datetime "updated_at",         :null => false
+    t.datetime "created_at",                            :null => false
+    t.datetime "updated_at",                            :null => false
+    t.boolean  "task_status",        :default => false
   end
 
   create_table "people", :force => true do |t|

@@ -49,10 +49,24 @@
       $scope.notes = {};
 
       $scope.noteCreate = function() {
-        var note = Note.api.save($scope.note)
-        $scope.note = {};
-        $scope.message = { type: 'success', message: "Note Created" }
-        $scope.notes.push(note)
+        if(this.note.id) {
+          Note.api.update({id: this.note.id}, this.note, function(response){
+            $scope.note = response;
+            $scope.message = { type: 'success', message: "Note Updated" }
+            var count = 0;
+            angular.forEach($scope.notes, function(v, k) {
+              if (v.id == $scope.note.id) {
+                $scope.notes[count] = $scope.note;
+              }
+              count++;
+            });
+          });        
+        } else {
+          var note = Note.api.save($scope.note);
+          $scope.note = {};
+          $scope.message = { type: 'success', message: "Note Created" }
+          $scope.notes.push(note)
+        }
       };
 
       $scope.notePerson = function() {
@@ -61,6 +75,10 @@
         var notes = NoteByPerson.api.query({id: this.person.id});
         $scope.notes = notes
       };
+
+      $scope.editNote = function() {
+        $scope.note = Note.api.get({id: this.note.id })
+      }
     }
   ];
 
