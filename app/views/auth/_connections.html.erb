@@ -6,9 +6,9 @@
 			<div class="media">
 				<a class="pull-left" href="#">
 					<% if c.image.present? %>
-					<img src="/linkedin_images/<%= c.image %>.jpeg" style="height: 32px; width: 32px;" class="media-object">
+					<img src="/linkedin_images/<%= c.image %>.jpeg" style="height: 32px; width: 32px;" class="media-object connection">
 					<% else %>
-						<%= image_tag("default_profile.png", height: '32', width: '32', :class=>"media-object") %>
+						<%= image_tag("default_profile.png", height: '32', width: '32', :class=>"media-object connection") %>
 					<% end %>
 				</a>
 				<div class="media-body">

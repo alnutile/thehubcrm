@@ -1,6 +1,8 @@
 Linkedin::Application.routes.draw do
 
   match "dashboard" => "dashboard#index"
+  match "dashboard/reminders" => "dashboard#reminders_all"
+  match "dashboard/tasks" => "dashboard#tasks_all"
 
   resources :linked_in_settings
 
@@ -11,7 +13,12 @@ Linkedin::Application.routes.draw do
   end
 
 
-  resources :notes
+  resources :notes do
+    collection do
+      get 'reminders_all'
+      get 'tasks_all'
+    end
+  end
 
   resources :auth
 

@@ -1,0 +1,29 @@
+<div ng-app="HubCRM" class="container">
+		<div ng-controller="RemindersCtrl">
+			<div class="row">
+<%= render 'shared/nav' %>
+<%= render :partial => 'dash_header', :locals => { :title => "Reminders"}  %>
+        	<div class="row">
+				<div class="well span8">
+					<%= render 'note' %>
+					<div class="row">
+							<h5 class="text-center">Reminders</h5>		
+							<div class="span3 well">
+								<h6>Open</h6>
+								<%= render 'reminders' %>
+							</div>
+							<div class="span3 well">
+								<h6>Closed</h6>
+								<%= render 'reminders_closed' %>
+							</div>
+					</div>
+				</div>
+			    <div class="span3">
+			    	<h5>Connections</h5>
+			    	<%= render 'connections' %>
+			    </div>
+			</div>
+	</div>
+</div>
+</div>
+<%= render 'dash_footer' %>

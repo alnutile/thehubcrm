@@ -41,11 +41,26 @@ class NotesController < ApplicationController
   end
 
   def notes_using_person_id
-    logger.info("Notes: #{params}")
     @notes = Note.find_by_related_profile_id(params[:id])
     respond_to do |format|
       format.html # new.html.erb
       format.json { render json: @notes }
+    end  
+  end
+
+  def reminders_all
+    @reminders_all = Note.reminders_all
+    respond_to do |format|
+      format.html # new.html.erb
+      format.json { render json: @reminders_all }
+    end  
+  end
+
+  def tasks_all
+    @tasks_all = Note.tasks_all
+    respond_to do |format|
+      format.html # new.html.erb
+      format.json { render json: @tasks_all }
     end  
   end
 
