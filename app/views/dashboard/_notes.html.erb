@@ -1,0 +1,18 @@
+<!-- notes partial -->
+<div class="accordion" id="accordion2">
+  <div ng-hide="note.reminder" class="accordion-group note-{{note.id}}" ng-repeat="note in notes">
+    <div class="accordion-heading">
+      <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapse-{{$index + 1}}">
+        {{ note.title }} 
+        <span ng-show="note.id">@</span> {{ note.created_at}} 
+        <a ng-show="note.id" class="edit-note" ng-click="editNote()"><i class="icon-edit"></i></a>
+        <a ng-show="note.id" class="edit-note" ng-click="deleteNote()"><i class="icon-remove-circle"></i></a>
+      </a>
+    </div>
+    <div id="collapse-{{$index + 1}}" class="accordion-body collapse">
+      <div class="accordion-inner">
+        {{ note.body }}
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,25 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Key:</b>
+  <%= @linked_in_setting.key %>
+</p>
+
+<p>
+  <b>Secret:</b>
+  <%= @linked_in_setting.secret %>
+</p>
+
+<p>
+  <b>Synced last:</b>
+  <%= @linked_in_setting.synced_last %>
+</p>
+
+<p>
+  <b>Total count:</b>
+  <%= @linked_in_setting.total_count %>
+</p>
+
+
+<%= link_to 'Edit', edit_linked_in_setting_path(@linked_in_setting) %> |
+<%= link_to 'Back', linked_in_settings_path %>

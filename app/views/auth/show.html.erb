@@ -1,0 +1,15 @@
+
+<%= render 'shared/nav' %>
+<div class="row">
+
+	<div class="span7 well">
+		<%= render :controller => :notes, :action => :new, :partial => "notes/form" %>
+	</div>
+
+	<div class="span4">
+		<%= render('profile') %>
+
+		<%= render('connections') %>
+	</div>
+
+</div><!--end row-->

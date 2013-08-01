@@ -1,0 +1,23 @@
+			    	<form ng-submit="noteCreate()" ng-model="note">
+			    		<h3>Note</h3>
+			    		<input type="text" ng-model="note.title" placeholder="Title..." class="input-xlarge"/>
+			    		<br>
+			    		<label class="checkbox inline"><input type="checkbox" ng-model="note.task">Task</label>
+			    		<label class="checkbox inline"><input type="checkbox" ng-model="note.reminder">Reminder</label>
+			    		<label class="checkbox inline"><input type="checkbox" ng-model="note.task_status">Closed</label>
+			    		
+			    		<label>Date:</label><input id="action_date" type="text" ng-model="note.action_date">
+			    		<label>Message:</label>
+			    		<textarea id="message" class="input-block-level" rows="6" ng-model="note.body"></textarea>
+			    		<label>Related Profile:</label>
+			    		<input type="text" ng-model="note.related_profile_id">
+			    		<div class="form-actions">
+			    			<button type="submit" class="btn btn-primary">Submit</button>
+			    			<br>
+							<div ng-show="message.type.length" class="alert alert-{{message.type}}">
+				          		<button type="button" class="close" data-dismiss="alert">&times;</button>
+				          		<br>
+				          		{{message.message}}
+				        	</div>
+			    		</div>
+			    	</form>

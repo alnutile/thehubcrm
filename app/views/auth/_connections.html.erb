@@ -1,0 +1,24 @@
+<div>
+	<h2>Contacts</h2>
+	<small>count: <%= @count %></small>
+	<% @connections.each do |c| %>
+		<% if c.first_name.present? && c.first_name != "private" %>
+			<div class="media">
+				<a class="pull-left" href="#">
+					<% if c.image.present? %>
+					<img src="/linkedin_images/<%= c.image %>.jpeg" style="height: 32px; width: 32px;" class="media-object connection">
+					<% else %>
+						<%= image_tag("default_profile.png", height: '32', width: '32', :class=>"media-object connection") %>
+					<% end %>
+				</a>
+				<div class="media-body">
+					<div class="media-heading">
+						<a class="connection" href="#" data-profile-id="<%= c.network_id %>">
+							<%= c.first_name %> <%= c.last_name %>
+						</a>
+					</div>	
+				</div>
+			</div>
+		<% end %>
+	<% end %>
+<div>

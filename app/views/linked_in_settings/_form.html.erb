@@ -1,0 +1,33 @@
+<%= form_for(@linked_in_setting) do |f| %>
+  <% if @linked_in_setting.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@linked_in_setting.errors.count, "error") %> prohibited this linked_in_setting from being saved:</h2>
+
+      <ul>
+      <% @linked_in_setting.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :key %><br />
+    <%= f.text_field :key %>
+  </div>
+  <div class="field">
+    <%= f.label :secret %><br />
+    <%= f.text_field :secret %>
+  </div>
+  <div class="field">
+    <%= f.label :synced_last %><br />
+    <%= f.datetime_select :synced_last %>
+  </div>
+  <div class="field">
+    <%= f.label :total_count %><br />
+    <%= f.number_field :total_count %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

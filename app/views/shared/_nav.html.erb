@@ -1,0 +1,12 @@
+<div class="navbar" ng-controller="NavCtrl">
+  <div class="navbar-inner">
+    <a class="brand" href="/dashboard">TheHubCRM</a>
+    <ul class="nav">
+      <li><a href="/dashboard">Connect</a></li>
+      <li><a href="/dashboard/tasks">Tasks&nbsp;<span class="badge" ng-model="tasks_count">{{tasks_count}}</span></a></li>
+      <li><a href="/dashboard/reminders">Reminders &nbsp;<span class="badge" ng-model="reminder_count">{{reminder_count}}</span></a></li>
+      <li><a href="#">Job Board</a></li>
+      <li><a href="#">Settings</a></li>
+    </ul>
+  </div>
+</div>

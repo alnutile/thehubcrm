@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  title: MyString
+  task: false
+  action_date: 2013-07-26
+  reminder: false
+  body: MyText
+  related_profile_id: MyString
+
+two:
+  title: MyString
+  task: false
+  action_date: 2013-07-26
+  reminder: false
+  body: MyText
+  related_profile_id: MyString

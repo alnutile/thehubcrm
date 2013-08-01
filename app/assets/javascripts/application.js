@@ -11,5 +11,20 @@
 // GO AFTER THE REQUIRES BELOW.
 //
 //= require jquery
+//= require jquery.ui.all
 //= require jquery_ujs
+//= require bootstrap-wysihtml5
+//= require bootstrap
+//= require angular
+//= require angular-resource
+//= require angular-ui
+//= require date.js
+//= require jquery-ui-timepicker-addon
+//= require dash_non_angular
+//= require jquery.easing.1.3
+//= require noty/jquery.noty
+//= require noty/top
+//= require noty/topCenter
+//= require noty/default
+//= require dashboard
 //= require_tree .

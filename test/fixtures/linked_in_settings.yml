@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  key: MyString
+  secret: MyString
+  synced_last: 2013-07-26 19:39:57
+  total_count: 1
+
+two:
+  key: MyString
+  secret: MyString
+  synced_last: 2013-07-26 19:39:57
+  total_count: 1

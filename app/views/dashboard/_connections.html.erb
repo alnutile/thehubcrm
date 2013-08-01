@@ -1,0 +1,17 @@
+<input type="text" ng-model="query" class="people-search size-medium" placeholder="Search...">
+<div class="media" ng-repeat="person in people | filter:query ">
+	<a class="pull-left" href="#">
+		<a ng-click="notePerson()">
+			<img ng-show="person.image.length" src="/linkedin_images/{{person.image}}.jpeg" class="media-object connection"></a>
+		<a ng-click="notePerson()">
+			<img ng-hide="person.image.length" src="<%= image_path("default_profile.png") %>"  class="media-object connection">
+		</a>
+	</a>
+	<div class="media-body">
+		<div class="media-heading">
+			<a ng-click="notePerson()" class="connection">
+				{{person.first_name}} {{person.last_name}}
+			</a>
+		</div>	
+	</div>
+</div>

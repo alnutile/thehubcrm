@@ -1,4 +1,29 @@
 Linkedin::Application.routes.draw do
+
+  match "dashboard" => "dashboard#index"
+  match "dashboard/reminders" => "dashboard#reminders_all"
+  match "dashboard/tasks" => "dashboard#tasks_all"
+
+  resources :linked_in_settings
+
+
+  resources :people do
+    resources :notes do
+    end
+  end
+
+
+  resources :notes do
+    collection do
+      get 'reminders_all'
+      get 'reminders_open'
+      get 'tasks_open'
+      get 'tasks_all'
+    end
+  end
+
+  resources :auth
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
