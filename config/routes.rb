@@ -16,6 +16,8 @@ Linkedin::Application.routes.draw do
   resources :notes do
     collection do
       get 'reminders_all'
+      get 'reminders_open'
+      get 'tasks_open'
       get 'tasks_all'
     end
   end

@@ -6,6 +6,7 @@ class Note < ActiveRecord::Base
   #scope :has_date, -> { where("date IS NOT NULL")} 
   #scope :content, ->(searched) { where(["content LIKE ?", "%#{searched}%"]) }
   scope :reminders_all, -> { where reminder: true }
+  #scope :reminders_open, -> { where reminder: true, task_status: false }.count()
   scope :tasks_all, -> { where task: true }
   
 end

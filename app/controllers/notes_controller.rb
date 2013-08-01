@@ -48,6 +48,22 @@ class NotesController < ApplicationController
     end  
   end
 
+  def tasks_open
+    @tasks_open = Note.where(:task => true, :task_status => false).count()
+    respond_to do |format|
+      format.html # new.html.erb
+      format.json { render json: @tasks_open }
+    end  
+  end
+
+  def reminders_open
+    @reminders_open = Note.where(:reminder => true, :task_status => false).count()
+    respond_to do |format|
+      format.html # new.html.erb
+      format.json { render json: @reminders_open }
+    end  
+  end
+
   def reminders_all
     @reminders_all = Note.reminders_all
     respond_to do |format|

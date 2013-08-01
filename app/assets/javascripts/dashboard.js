@@ -74,16 +74,6 @@
     }
   ]);
 
-      //   function(notes) {
-      //   var count = '';
-      //   angular.forEach(notes, function(v, k) {
-      //       if (v.task_status === false) {
-      //         count++;
-      //       }
-      //     });
-      //     return count;
-      // }
-
   app.factory("TaskCount", [
     "$resource", "$http", "$rootScope", function($resource, $http, $rootScope) {
       return {
@@ -198,8 +188,17 @@
 
   this.NavCtrl = [
     "$scope", "$http", function($scope, $http) {
-      $scope.tasks_count = 10;
-      $scope.reminder_count = 11;
+      
+      $http({method: 'GET', url: '/notes/tasks_open.json'}).
+        success(function(data){
+          $scope.tasks_count = data
+      });    
+
+      $http({method: 'GET', url: '/notes/reminders_open.json'}).
+        success(function(data){
+          $scope.reminder_count = data
+      });
+
     }
   ];
 
