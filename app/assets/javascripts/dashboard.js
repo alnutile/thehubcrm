@@ -15,6 +15,15 @@
       }
     }
   ]);
+
+  app.filter('active', ["$location", function($location){
+    return function(input) {
+      var state = '';
+      var where = $location.$$absUrl.split('/').pop()
+      if ( where === input ) { state = 'active'; }
+      return state
+    }
+  }]);
   
   app.factory("Note", [
     "$resource", function($resource) {
