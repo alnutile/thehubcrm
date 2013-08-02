@@ -6,28 +6,17 @@
         		<div class="span9">
 					<%= render 'note' %>
 					<%= render 'notes' %>
-					
-
-					<div class="row">	
-						<div class="span4 well">
-							<h3 class="text-center">Reminders</h3>
-							<h4>Open</h4>
-							<%= render 'reminders' %>
-							<h4>Closed</h4>
-							<%= render 'reminders_closed' %>
-						</div>
-						<div class="span4 well">
-							<h3 class="text-center">Tasks</h3>
-							<h4>Open</h4>
-							<%= render 'tasks' %>
-							<h4>Closed</h4>
-							<%= render 'tasks_closed' %>
-						</div>
+					<div class="span4">
+						<%= render 'reminders' %>
+						<%= render 'reminders_closed' %>
+					</div>
+					<div class="span4">
+						<%= render 'tasks' %>
+						<%= render 'tasks_closed' %>
 					</div>
 				</div>
-				
+
 			    <div class="span3">
-			    	<h3>Connections</h3>
 			    	<%= render 'connections' %>
 			    </div>
 			</div>

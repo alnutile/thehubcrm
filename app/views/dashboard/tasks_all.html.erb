@@ -1,28 +1,22 @@
-<div ng-app="HubCRM" class="container">
-		<div ng-controller="TasksCtrl">
-			<div class="row">
+<div class="container">
+		<div ng-controller="TasksCtrl" class="row">
 			<%= render :partial => 'dash_header', :locals => { :title => "Tasks"}  %>
         	<div class="row">
-				<div class="well span8">
+				<div class="span9">
 					<%= render 'note' %>
-					<div class="row">
-							<h5 class="text-center">Tasks</h5>		
-							<div class="span3 well">
-								<h6>Open</h6>
-								<%= render 'reminders' %>
-							</div>
-							<div class="span3 well">
-								<h6>Closed</h6>
-								<%= render 'reminders_closed' %>
-							</div>
+					<div class="span4">
+						<%= render 'reminders' %>
+						<%= render 'reminders_closed' %>
+					</div>
+					<div class="span4">
+						<%= render 'tasks' %>
+						<%= render 'tasks_closed' %>
 					</div>
 				</div>
 			    <div class="span3">
-			    	<h5>Connections</h5>
 			    	<%= render 'connections' %>
 			    </div>
 			</div>
-	</div>
-</div>
+		</div>
 </div>
 <%= render 'dash_footer' %>

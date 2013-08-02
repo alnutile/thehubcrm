@@ -25,6 +25,12 @@
     }
   }]);
   
+  app.filter('formatDate', ["$filter", function($filter){
+    return function(input) {
+      return   $filter('date')(input, 'EEE, MM-dd hh:mm')
+    }
+  }]);
+
   app.factory("Note", [
     "$resource", function($resource) {
       return {
@@ -215,15 +221,6 @@
     "$scope", "$http", "PeopleAPI", "NoteByPerson", "Note", "Messages", function($scope, $http, PeopleAPI, NoteByPerson, Note, Messages) {
       var documentBody = document.body;
       
-      // $scope.set_reminder_count = function(notes) {
-      //   var count = '';
-      //   angular.forEach(notes, function(v, k) {
-      //       if (v.task_status === false) {
-      //         count++;
-      //       }
-      //     });
-      //     return count;
-      // }
 
       $scope.dash = []
       $scope.people = PeopleAPI.api.query();
@@ -232,11 +229,10 @@
       $scope.notes = {};
       $scope.reminder_count = '';
 
-      // $http({method: 'GET', url: '/notes/reminders_all.json'}).
-      //   success(function(data){
-      //     $scope.notes = data;
-      //     $scope.reminder_count = $scope.set_reminder_count(data);
-      // });
+      $http({method: 'GET', url: '/notes/reminders_all.json'}).
+        success(function(data){
+          $scope.notes = data;
+      });
 
       $scope.deleteNote = function() {
         Messages.trigger_message('Note Deleted', 'success');
