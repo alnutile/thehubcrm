@@ -1,17 +1,28 @@
 <!-- notes partial -->
-<div class="accordion" id="accordion2">
-  <div ng-show="note.reminder && note.task_status"  class="accordion-group note-{{note.id}}" ng-repeat="note in notes">
-    <div class="accordion-heading">
-      <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapse-{{$index + 1}}">
-        {{ note.title }} 
-        <a ng-show="note.id" class="edit-note" ng-click="editNote()"><i class="icon-edit"></i></a>
-        <a ng-show="note.id" class="edit-note" ng-click="deleteNote()"><i class="icon-remove-circle"></i></a>
-      </a>
-    </div>
-    <div id="collapse-{{$index + 1}}" class="accordion-body collapse">
-      <div class="accordion-inner">
-        {{ note.body }}
+  <div class="widget stacked">
+      <div class="widget-header">
+        <i class="icon-calendar"></i>
+        <h3>Reminders Closed</h3>
+      </div> <!-- /widget-header -->
+      <div class="widget-content">
+
+      <div class="accordion" id="accordion2">
+        <div ng-show="note.reminder && note.task_status"  class="accordion-group note-{{note.id}}" ng-repeat="note in notes">
+          <div class="accordion-heading">
+            <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapse-{{$index + 1}}">
+              {{ note.title }} @ {{ note.created_at | formatDate }} 
+              <a ng-show="note.id" class="edit-note" ng-click="editNote()"><i class="icon-edit"></i></a>
+              <a ng-show="note.id" class="edit-note" ng-click="deleteNote()"><i class="icon-remove-circle"></i></a>
+            </a>
+          </div>
+          <div id="collapse-{{$index + 1}}" class="accordion-body collapse">
+            <div class="accordion-inner">
+              {{ note.body }}
+            </div>
+          </div>
+        </div>
       </div>
-    </div>
+
+
+      </div>
   </div>
-</div>

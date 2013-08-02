@@ -1,0 +1,42 @@
+<div class="subnavbar" ng-controller="NavCtrl">
+
+	<div class="subnavbar-inner">
+		<div class="container">
+			<a class="btn-subnavbar collapsed" data-toggle="collapse" data-target=".subnav-collapse">
+				<i class="icon-reorder"></i>
+			</a>
+			<div class="subnav-collapse collapse">
+				<ul class="mainnav">				
+					<li class="{{ 'dashboard' | active }}">
+						<a href="/dashboard">
+							<i class="icon-home"></i>
+							<span>Home</span>
+						</a>	    				
+					</li>		
+					<li class="{{ 'tasks' | active:tasks }}">					
+						<a href="/dashboard/tasks">
+							<i class="icon-th"></i>
+							<span>Tasks&nbsp;<span class="badge" ng-model="tasks_count">{{tasks_count}}</span></span>
+						</a>			
+					</li>
+					
+					<li class="{{ 'reminders' | active }}">					
+						<a href="/dashboard/reminders">
+							<i class="icon-copy"></i>
+							<span>Reminders &nbsp;<span class="badge" ng-model="reminder_count">{{reminder_count}}</span></span>
+						</a>	    				
+					</li>
+					<li class="{{ 'jobs' | active }}">					
+						<a href="#">
+							<i class="icon-external-link"></i>
+							<span>Jobs</span>
+						</a>			
+					</li>
+				</ul>
+			</div> <!-- /.subnav-collapse -->
+
+		</div> <!-- /container -->
+	
+	</div> <!-- /subnavbar-inner -->
+
+</div>
