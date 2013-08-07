@@ -1,3 +1,4 @@
+<div class="span4>">
 <p id="notice"><%= notice %></p>
 
 <p>
@@ -20,6 +21,11 @@
   <%= @linked_in_setting.total_count %>
 </p>
 
-
+	<%= link_to("Sync", { :controller => 'linked_in_settings', :action => "show", :id => @linked_in_setting.id,  :sync => 'true', :format => :json},  :class => 'btn btn-large btn-primary sync') %>
+<br>
 <%= link_to 'Edit', edit_linked_in_setting_path(@linked_in_setting) %> |
 <%= link_to 'Back', linked_in_settings_path %>
+
+</div>
+
+<div class="syncing span4"></div>

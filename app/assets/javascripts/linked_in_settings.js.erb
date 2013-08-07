@@ -1,0 +1,14 @@
+$(document).ready(function(){
+	$('a.sync').on('click', function(){
+		var loading = "<%= asset_path 'ajax-loader.gif' %>";
+		console.log(loading);
+		$('div.syncing').html("<div class='alert alert-success'>Syncing People... <img src='"+loading+"'></div>").fadeIn();
+		var path = $(this).attr('href');
+		$.get(path, function(data){
+			var count = data.total_count;
+			$('div.syncing').fadeOut().html("<div class='alert alert-info'>People Synced new count is "+count+"...</div>").fadeIn();
+			$('.syncing').fadeIn();	
+		});
+		return false;
+	});
+});

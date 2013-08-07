@@ -4,34 +4,44 @@ class AuthController < ApplicationController
 	def index
 	    # get your api keys at https://www.linkedin.com/secure/developer
 	    #client = LinkedIn::Client.new("your_api_key", "your_secret")
-	    client = LinkedIn::Client.new(ENV['LINKEDIN_KEY'], ENV['LINKEDIN_SECRET'])
+	    @linked_in_settings = LinkedInSetting.first
+	    if  @linked_in_settings.present?
+	    	client = LinkedIn::Client.new("#{@linked_in_settings.key}", "#{@linked_in_settings.secret}")
+	    else
+	    	redirect_to linked_in_settings
+	    end
 	    request_token = client.request_token(:oauth_callback =>
-	                                      "http://#{request.host_with_port}/auth/callback")
+	                                       "http://#{request.host_with_port}/auth/callback")
 	    session[:rtoken] = request_token.token
 	    session[:rsecret] = request_token.secret
 
 	    redirect_to client.request_token.authorize_url
 
 	  end
+
 	  def show 
 	  	#sync or use existing
-	  	linked_in_data
-	  	@count = LinkedInSetting.first.total_count
-	    @note = Note.new
+	  	#redirect_to dashboard_path
+	  	#linked_in_data
+	  	#@count = LinkedInSetting.first.total_count
+	    #@note = Note.new
 	  end
 
 	  def callback
-	    client = LinkedIn::Client.new(ENV['LINKEDIN_KEY'], ENV['LINKEDIN_SECRET'])
-	    logger.info("Client #{client.to_s}")
-	    if session[:atoken].nil?
-	      pin = params[:oauth_verifier]
-	      atoken, asecret = client.authorize_from_request(session[:rtoken], session[:rsecret], pin)
-	      session[:atoken] = atoken
-	      session[:asecret] = asecret
-	    else
-	      client.authorize_from_access(session[:atoken], session[:asecret])
-	    end
-	    @connections = client.connections
+	  	# redirect_to dashboard_path
+		# @linked_in_settings = LinkedInSetting.first
+		 client = LinkedIn::Client.new(@linked_in_settings.key, @linked_in_settings.secret)
+
+
+		 if session[:atoken].nil?
+		   pin = params[:oauth_verifier]
+		   atoken, asecret = client.authorize_from_request(session[:rtoken], session[:rsecret], pin)
+		   session[:atoken] = atoken
+		   session[:asecret] = asecret
+		 else
+		   client.authorize_from_access(session[:atoken], session[:asecret])
+		 end
+		 @connections = client.connections
 	  end
 
 	  private 
@@ -39,7 +49,8 @@ class AuthController < ApplicationController
 	    	if LinkedInSetting.first.present? 
 				@connections = Person.all 
 	    	else
-		    	client = LinkedIn::Client.new(ENV['LINKEDIN_KEY'], ENV['LINKEDIN_SECRET'])
+		  	  @linked_in_settings = LinkedInSetting.first
+	          client = LinkedIn::Client.new(@linked_in_settings.key, @linked_in_settings.secret)
 			    if session[:atoken].nil?
 			      pin = params[:oauth_verifier]
 			      atoken, asecret = client.authorize_from_request(session[:rtoken], session[:rsecret], pin)
@@ -54,7 +65,8 @@ class AuthController < ApplicationController
 	    end
 
 	    def save_connections(connections)
-	    	Person.delete_all
+	    	#Person.delete_all
+	    	logger.info("Connections: #{connections}")
 	    	connections.all.each do |c|
 	    		if c.picture_url.present?
 	    		  path = File.join("public/linkedin_images", "#{c.id}.jpeg")

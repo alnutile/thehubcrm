@@ -1,6 +1,6 @@
 class Note < ActiveRecord::Base
   attr_accessible :action_date, :body, :related_profile_id, :reminder, :task, :title, :task_status
-
+  belongs_to :person, :foreign_key => "related_profile_id", :primary_key => "network_id"
   #Note.where(:reminder => true)
   #scope :published, -> { where published: true }
   #scope :has_date, -> { where("date IS NOT NULL")} 
@@ -8,5 +8,4 @@ class Note < ActiveRecord::Base
   scope :reminders_all, -> { where reminder: true }
   #scope :reminders_open, -> { where reminder: true, task_status: false }.count()
   scope :tasks_all, -> { where task: true }
-  
 end

@@ -4,16 +4,20 @@ gem 'rails', '3.2.13'
 gem 'linkedin'
 gem 'bootstrap-sass', '~> 2.3.2.1'
 gem 'bootstrap-wysihtml5-rails'
+
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
 group :development do
- gem 'vcr_cable'
+	#gem 'vcr_cable'
+	gem 'better_errors'
+	gem 'binding_of_caller'
+	gem 'meta_request'
 end
 
 group :development, :test do
-  gem 'vcr'
-  gem 'fakeweb'
+  #gem 'vcr'
+  #gem 'fakeweb'
 end 
 
 gem 'sqlite3'

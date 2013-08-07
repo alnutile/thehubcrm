@@ -25,7 +25,7 @@ class NotesController < ApplicationController
 
     respond_to do |format|
       format.html # show.html.erb
-      format.json { render json: @note }
+      format.json { render json: @note.to_json(:include => :person) }
     end
   end
 

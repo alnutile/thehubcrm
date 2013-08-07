@@ -1,3 +1,5 @@
+require 'linkedin'
+require 'open-uri'
 class LinkedInSettingsController < ApplicationController
   # GET /linked_in_settings
   # GET /linked_in_settings.json
@@ -14,7 +16,21 @@ class LinkedInSettingsController < ApplicationController
   # GET /linked_in_settings/1.json
   def show
     @linked_in_setting = LinkedInSetting.find(params[:id])
-
+    if params[:sync]
+      linked_in_settings = LinkedInSetting.first
+      # @todo clean up sessions might not be really needed
+      #   since now in db
+      session[:atoken] = linked_in_settings.atoken
+      session[:asecret] = linked_in_settings.asecret
+      session[:rtoken] = linked_in_settings.rtoken
+      session[:rsecret] = linked_in_settings.rsecret
+      client = LinkedIn::Client.new(linked_in_settings.key, linked_in_settings.secret)
+      client.authorize_from_access(linked_in_settings.atoken, linked_in_settings.asecret)
+      @new_linked_in = client.connections
+      logger.info("Connections: #{@new_linked_in._count}")
+      linked_in_sync(@new_linked_in)
+      linked_in_settings.update_attributes(:total_count => @new_linked_in.total )
+    end
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @linked_in_setting }
@@ -67,6 +83,28 @@ class LinkedInSettingsController < ApplicationController
         format.json { render json: @linked_in_setting.errors, status: :unprocessable_entity }
       end
     end
+  end
+
+  def linked_in_sync(latest)
+        latest.all.each do |c|
+          find_contact = Person.find_by_network_id("#{c.id}").nil?
+          if find_contact == true
+            if c.picture_url.present?
+              path = File.join("public/linkedin_images", "#{c.id}.jpeg")
+              File.open(path, "wb") { |f| f.write(open(c.picture_url).read) }
+              image = c.id
+            else
+              image = ''
+            end
+            Person.create!(
+              :first_name => c.first_name,
+              :last_name => c.last_name,
+              :image => image,
+              :network_id => c.id,
+            );
+            end
+          end
+
   end
 
   # DELETE /linked_in_settings/1
