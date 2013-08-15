@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130729182527) do
+ActiveRecord::Schema.define(:version => 20130803193359) do
 
   create_table "linked_in_settings", :force => true do |t|
     t.string   "key"
@@ -20,6 +20,11 @@ ActiveRecord::Schema.define(:version => 20130729182527) do
     t.integer  "total_count"
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
+    t.string   "atoken"
+    t.string   "asecret"
+    t.string   "rtoken"
+    t.string   "rsecret"
+    t.string   "pin"
   end
 
   create_table "notes", :force => true do |t|

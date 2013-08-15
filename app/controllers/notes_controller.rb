@@ -25,7 +25,7 @@ class NotesController < ApplicationController
 
     respond_to do |format|
       format.html # show.html.erb
-      format.json { render json: @note }
+      format.json { render json: @note.to_json(:include => :person) }
     end
   end
 
@@ -65,10 +65,10 @@ class NotesController < ApplicationController
   end
 
   def reminders_all
-    @reminders_all = Note.reminders_all
+    @reminders_all = Note.reminders_all.all(:include => :person)
     respond_to do |format|
       format.html # new.html.erb
-      format.json { render json: @reminders_all }
+      format.json { render :json => @reminders_all, :include => :person }
     end  
   end
 

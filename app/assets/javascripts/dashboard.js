@@ -121,13 +121,6 @@
           } else {
             $rootScope.count = data;
           }
-          //console.log($rootScope.count);
-          // angular.forEach($rootScope.RemindersAll, function(v, k) {
-          //   if (v.task_status === false) {
-          //     count++;
-          //   }
-          // });
-          
           return count;
         }
       };
@@ -182,6 +175,7 @@
 
       $scope.notePerson = function() {
         jQuery.noty.closeAll();
+        $scope.note = {};
         $scope.note.related_profile_id = this.person.network_id
         var notes = NoteByPerson.api.query({id: this.person.id});
         var message = "Loaded notes realted to " + this.person.first_name + ' ' + this.person.last_name;
@@ -191,6 +185,7 @@
 
       $scope.$showNote = function(note) {
         console.log(note);
+        $scope.note = {};
       };
 
       $scope.editNote = function() {
@@ -275,6 +270,7 @@
 
       $scope.notePerson = function() {
         jQuery.noty.closeAll();
+        $scope.note = {};
         $scope.note.related_profile_id = this.person.network_id
         var notes = NoteByPerson.api.query({id: this.person.id});
         var message = "Loaded notes realted to " + this.person.first_name + ' ' + this.person.last_name;
@@ -355,7 +351,7 @@ this.TasksCtrl = [
         jQuery.noty.closeAll();
         $scope.note.related_profile_id = this.person.network_id
         var notes = NoteByPerson.api.query({id: this.person.id});
-        var message = "Loaded notes realted to " + this.person.first_name + ' ' + this.person.last_name;
+        var message = "Loaded notes related to " + this.person.first_name + ' ' + this.person.last_name;
         Messages.trigger_message(message, 'success');
         $scope.notes = notes
       };

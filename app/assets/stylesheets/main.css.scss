@@ -2,3 +2,7 @@
 @import "bootstrap/variables";
 @import "bootstrap/mixins";
 
+a.btn.btn-large.btn-primary {
+	text-decoration: none;
+	color: white;
+}
