@@ -12,6 +12,13 @@
             
             <div class="accordion-heading">
                 <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapse-{{$index + 1}}">
+                  <a class="pull-left" href="#">
+                    <a ng-click="notePerson()">
+                      <img ng-show="note.person.image.length" src="/linkedin_images/{{note.person.image}}.jpeg" class="media-object connection"></a>
+                    <a ng-click="notePerson()">
+                      <img ng-hide="note.person.image.length" src="<%= image_path("default_profile.png") %>"  class="media-object connection">
+                    </a>
+                  </a>
                   {{ note.title }} @ {{ note.created_at | formatDate  }}
                   <a ng-show="note.id" class="edit-note" ng-click="editNote()"><i class="icon-edit"></i></a>
                   <a ng-show="note.id" class="edit-note" ng-click="deleteNote()"><i class="icon-remove-circle"></i></a>
