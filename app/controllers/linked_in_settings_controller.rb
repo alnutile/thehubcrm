@@ -91,8 +91,9 @@ class LinkedInSettingsController < ApplicationController
           if find_contact == true
             if c.picture_url.present?
               path = File.join("public/linkedin_images", "#{c.id}.jpeg")
-              File.open(path, "wb") { |f| f.write(open(c.picture_url).read) }
-              image = c.id
+              #File.open(path, "wb") { |f| f.write(open(c.picture_url).read) }
+              #image = c.id
+              image = '' #@todo see why the above fails
             else
               image = ''
             end

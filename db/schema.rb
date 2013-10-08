@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130803193359) do
+ActiveRecord::Schema.define(:version => 20130905092916) do
 
   create_table "linked_in_settings", :force => true do |t|
     t.string   "key"
@@ -46,6 +46,7 @@ ActiveRecord::Schema.define(:version => 20130803193359) do
     t.string   "network_id"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+    t.string   "stars"
   end
 
 end

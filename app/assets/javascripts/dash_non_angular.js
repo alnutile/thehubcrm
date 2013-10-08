@@ -1,5 +1,5 @@
  $(document).ready(function() {
-
+    //$('.star').raty();
     //@todo get this to work
     //  $('#action_date').datetimepicker();
     //  $('#action_date').on('mouseout', function(){

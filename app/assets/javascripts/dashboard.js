@@ -1,16 +1,25 @@
 (function() {
 
-
   var app;
 
   app = angular.module("HubCRM", ["ngResource", "ui.date"]);
+
+  app.directive("raty", function() {
+    return {
+        restrict: 'AE',
+        link: function(scope, elem, attrs) {
+            $(elem).raty({score: attrs.score, number: attrs.number});
+            console.log(attrs);
+        }
+    }
+  });
 
   app.factory("PeopleAPI", [
     "$resource", function($resource) {
       return {
         api:
-        //@todo make this dyanmic eg /people.json OR /people/55.json
-        $resource("/people.json", { id: "@id" }, {
+            //@todo make this dyanmic eg /people.json OR /people/55.json
+            $resource("/people.json", { id: "@id" }, {
         })
       }
     }
