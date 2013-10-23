@@ -18,9 +18,6 @@ end
 
 gem 'pg'
 
-gem 'angularjs-rails'
-gem 'angular-ui-rails'
-
 
 # Gems used only for assets and not required
 # in production environments by default.
@@ -31,7 +28,8 @@ group :assets do
   gem 'jquery_datepicker'
   # See https://github.com/sstephenson/execjs#readme for more supported runtimes
   # gem 'therubyracer', :platforms => :ruby
-
+  gem 'angularjs-rails'
+  gem 'angular-ui-rails'
   gem 'uglifier', '>= 1.0.3'
 end
 
