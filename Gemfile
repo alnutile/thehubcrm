@@ -18,6 +18,8 @@ end
 
 gem 'pg'
 
+gem 'angularjs-rails'
+gem 'angular-ui-rails'
 
 
 # Gems used only for assets and not required
@@ -26,8 +28,6 @@ group :assets do
   gem 'jquery-raty-rails'
   gem 'sass-rails',   '~> 3.2.3'
   gem 'coffee-rails', '~> 3.2.1'
-  gem 'angularjs-rails'
-  gem 'angular-ui-rails'
   gem 'jquery_datepicker'
   # See https://github.com/sstephenson/execjs#readme for more supported runtimes
   # gem 'therubyracer', :platforms => :ruby
